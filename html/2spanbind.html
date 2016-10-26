@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>属性绑定</title>
+	</head>
+	<body>
+		<div id="app-2">
+			<span id="test" v-bind:title="message">
+				hover your mouse over me for a few seconds to see my dynamically bound title!
+			</span>
+			最终会被渲染成title
+			<span id="test" v-bind:data-id="demoid">
+				hover your mouse over me for a few seconds to see my dynamically bound title!
+			</span>
+		</div>
+		<script src="//cdn.bootcss.com/vue/2.0.3/vue.js"></script>
+		<script type="text/javascript">
+			var app=new Vue({
+				el:'#app-2',
+				data:{
+					message:'Hello Wlz',
+					demoid:1
+				}
+			})
+		</script>	
+	</body>
+</html>

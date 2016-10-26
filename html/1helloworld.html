@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>你好世界</title>
+	</head>
+	<body>
+		<div id="app">
+			{{message}}
+		</div>
+		使用app.message可以改变数据
+		<script src="//cdn.bootcss.com/vue/2.0.3/vue.js"></script>
+		<script type="text/javascript">
+			var app=new Vue({
+				el:'#app',
+				data:{
+					message:'Hello Wlz'
+				}
+			})
+		</script>		
+	</body>
+</html>

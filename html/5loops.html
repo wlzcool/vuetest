@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>循环</title>
+	</head>
+
+	<body>
+		v-for标签用来循环输出,注意todos是数组，使用
+		 app.todos.push({ text: 'New item' }),可以添加新元素
+		
+		<div id="app-4">
+			<ol>
+				<li v-for="todo in todos">
+					{{todo.test}}
+				</li>
+			</ol>
+		</div>
+		<script src="//cdn.bootcss.com/vue/2.0.3/vue.js"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app-4',
+				data: {
+					todos: [{
+						test: 'learn javascript'
+					}, {
+						test: "learn C#"
+					}, {
+						test: "learn java"
+					}]
+
+				}
+			})
+		</script>
+	</body>
+
+</html>

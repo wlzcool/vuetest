@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>条件判断</title>
+	</head>
+
+	<body>
+		v-if标签用来判断是否展示
+		<div id="app">
+			<p v-if="seen">Now you see me</p>
+		</div>
+		<script src="//cdn.bootcss.com/vue/2.0.3/vue.js"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					seen: true
+				}
+			})
+		</script>
+	</body>
+
+</html>
