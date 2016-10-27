@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<title>组件</title>
 	</head>
+
 	<body>
+		<div id="app">
+			<ol>
+				<todo-item v-for="todo in todos" v-bind:todo="todo"></todo-item>
+			</ol>
+		</div>
 		组件是vue中十分重要的概念，将一个大型的网站划分为多个小组件
 		<script src="//cdn.bootcss.com/vue/2.0.3/vue.js"></script>
 		<script type="text/javascript">
+			Vue.component('todo-item', {
+				props: ['todo'],
+				templete: '<li>{{todo.text}}</li>'
+			});
 			var app = new Vue({
 				el: '#app',
 				data: {
-					message: "hello wlz"
-				},
-				methods: {
-					reverseMessages: function() {
-						this.message = this.message.split('').reverse().join('')
-					}
+					todos: [{
+						text: "Learn JavaScript"
+					}, {
+						text: "learn C#"
+					}]
 				}
 			})
 		</script>
 	</body>
+
 </html>
