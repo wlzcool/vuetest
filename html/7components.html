@@ -17,7 +17,7 @@
 		<script type="text/javascript">
 			Vue.component('todo-item', {
 				props: ['todo'],
-				templete: '<li>{{todo.text}}</li>'
+				template: '<li>{{todo.text}}</li>' //注意单词不要拼错，会报错的
 			});
 			var app = new Vue({
 				el: '#app',
