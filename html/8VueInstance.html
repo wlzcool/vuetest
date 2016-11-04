@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script src="//cdn.bootcss.com/vue/2.0.3/vue.js"></script>
+		<script type="text/javascript">
+			var s = new Vue({
+				//options
+				//http://vuejs.org/api/
+			});
+			//可重用组件
+			var MyComponent = Vue.extend({
+				//extension options
+			});
+			var myComponentInstance = new MyComponent();
+			//属性和方法
+			//所有的Vue实例为它的data对象中的属性提供了代理
+			var data = {
+				a: 1
+			};			
+			var vm = new Vue({
+				data: data
+			});			
+			console.log(vm.a === data.a);			
+			//对实例的属性进行赋值会对原值造成影响
+			vm.a = 2;
+			console.log(data.a);
+			//反之亦然
+			data.a = 3;
+			console.log(vm.a);
+			//如果是这样赋值结果就会完全不同
+			var data2 ={a:1};
+			s.data=data2;
+			console.log(s.a);
+			console.log(s.a===data2.a);
+			s.a = 2;
+			console.log(data2.a);			
+			data2.a = 3;
+			console.log(s.a);
+			//在console中查看vm和s的构成可以看到
+			//vm中的以_data形式存在而且对外暴露出了a
+			//s中则没有，这是因为在实例创建之后再向它绑定新的属性就不会触发任何视图更新了。
+			var s2=new Vue({});
+			var data3 = { a: 1 }
+			s2._data=data;
+			console.log(s2.a);
+			console.log(s2.a===data3.a);
+			s2.a = 2;
+			console.log(data3.a);			
+			data3.a = 3;
+			console.log(s2.a);
+			
+		</script>
+	</body>
+
+</html>
