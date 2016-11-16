@@ -53,6 +53,10 @@
 				v-on用来监听dom事件
 				<p v-on:click="alertHa">dom</p>
 				<p @click="alertHa">dom</p>
+				<h4>修饰符</h4>
+				半角句号.指明的特殊后缀，用于指出一个指定应该以特殊方式绑定，
+				比如.prevent修饰符告诉v-on指令对于触发的事件调用event.preventDefault();
+				<form v-on:submit.prevent="onSubmit"></form>
 			</div>
 
 			<script src="//cdn.bootcss.com/vue/2.0.3/vue.js"></script>

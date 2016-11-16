@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>计算属性</title>
+	</head>
+
+	<body>
+		<h3>计算属性</h3> 将模板中的逻辑放入计算属性中，防止在模板中放入过多逻辑使其变得臃肿。
+		<div id="example">
+			<p>原始消息：{{message}}</p>
+			<p>计算后属性：{{reversedMessage}}</p>
+			<p>方法达到同样的效果</p>
+		</div>
+		<h3>计算缓存vsMethods</h3>
+		<p>计算属性是基于它的依赖缓存。计算属性只有在它的相关依赖发生改变时才会重新取值。这就意味着只要 message 没有发生改变，</p>
+		<p>多次访问 reversedMessage 计算属性会立即返回之前的计算结果，而不必再次执行函数。</p>
+		<p>每当重新渲染时，method调用总会执行函数,当不希望有缓存的时候请使用method</p>
+		<script src="//cdn.bootcss.com/vue/2.0.3/vue.js"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#example',
+				data: {
+					message: "hello wlz"
+				},
+				computed: {
+					reversedMessage: function() {
+						return this.message.split("").reverse().join("")
+					}
+				},
+				methods: {
+					reverseMessage: function() {
+						return this.message.split('').reverse().join('')
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>
