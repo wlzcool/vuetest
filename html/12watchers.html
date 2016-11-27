@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>计算属性</title>
+	</head>
+
+	<body>
+
+		<div id="example">
+
+			<h3>观察watchers</h3>
+			<p>数据变化响应时，自定义watch在执行异步操作或昂贵操作的时候还是要比计算属性占优的</p>
+			<input v-model="question">
+			<p>{{answer}}</p>
+
+		</div>
+		<script src="//cdn.bootcss.com/vue/2.0.3/vue.js"></script>
+		<script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+		<script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#example',
+				data: {
+					question: "",
+					answer: "I can't give you an answer until you ask a question"
+				},
+				watch: { //相比计算属性而言，代码重复
+					question: function(newQuestion) { //注意不要丢了val
+						this.answer = "waiting for you to stop typing...";
+						this.getAnswer();
+					}
+				},
+				methods: {
+					getAnswer: _.debounce(function() {
+						var vm = this;
+						if(this.question.indexOf('?') === -1) {
+							vm.answer = 'question usually contains a question mark,;-)';
+						}
+						vm.answer = 'thinking.....';
+						axios.get('https://yesno.wtf/api')
+							.then(function(response) {
+								vm.answer = _.capitalize(response.data.answer)
+							}).catch(function(error) {
+								vm.answer = "Error! could not reach the API." + error;
+							})
+					}, 500)
+				}
+			})
+			app.fullName = "john wang";
+		</script>
+	</body>
+
+</html>
